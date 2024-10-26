@@ -14,11 +14,11 @@
             document.getElementById('number_show').value = currentInput;
         }
 
-        function setOperation(plus) {
+        function setOperation(op) {
             if (currentInput) {
                 total += parseFloat(currentInput);
                 currentInput = '';
-                operation = plus;
+                operation = op;
             }
         }
 
@@ -26,6 +26,15 @@
             if (currentInput && operation) {
                 if (operation === '+') {
                     total += parseFloat(currentInput);
+                }
+                if (operation === '-') {
+                    total -= parseFloat(currentInput);
+                }
+                if (operation === '*') {
+                    total *= parseFloat(currentInput);
+                }
+                if (operation === '/') {
+                    total /= parseFloat(currentInput);
                 }
                 document.getElementById('number_show').value = total;
                 currentInput = '';
@@ -50,19 +59,19 @@
                 <button class="btn btn-secondary text-danger w-25" onclick="clearAll()">C</button>
                 <button class="btn btn-secondary text-success w-25">%</button>
                 <button class="btn btn-secondary text-success w-25">del</button>
-                <button class="btn btn-secondary text-success w-25">/</button>
+                <button class="btn btn-secondary text-success w-25" onclick="setOperation('/')">/</button>
             </div>
             <div class="row">
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('7')">7</button>
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('8')">8</button>
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('9')">9</button>
-                <button class="btn btn-secondary text-success w-25">x</button>
+                <button class="btn btn-secondary text-success w-25" onclick="setOperation('*')">*</button>
             </div>
             <div class="row">
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('4')">4</button>
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('5')">5</button>
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('6')">6</button>
-                <button class="btn btn-secondary text-success w-25">-</button>
+                <button class="btn btn-secondary text-success w-25" onclick="setOperation('-')">-</button>
             </div>
             <div class="row">
                 <button class="btn btn-secondary text-light w-25" onclick="numberInput('1')">1</button>
