@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script>
+        let currentInput = '';
+        let total = 0;
+        let operation = '';
+
+        function numberInput(value) {
+            currentInput += value;
+            document.getElementById('number_show').value = currentInput;
+        }
+
+        function setOperation(plus) {
+            if (currentInput) {
+                total += parseFloat(currentInput);
+                currentInput = '';
+                operation = plus;
+            }
+        }
+
+        function calculate() {
+            if (currentInput && operation) {
+                if (operation === '+') {
+                    total += parseFloat(currentInput);
+                }
+                document.getElementById('number_show').value = total;
+                currentInput = '';
+                operation = '';
+            }
+        }
+
+        function clearAll() {
+            currentInput = '';
+            total = 0;
+            operation = '';
+            document.getElementById('number_show').value = '';
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body class="bg-dark"><br><br><br>
+    <div class="w-25 m-auto">
+        <input class="w-100" id = "number_show" type="number"><br><br><br>
+        <div class="bg-secondary">
+            <div class="row">
+                <button class="btn btn-secondary text-danger w-25" onclick="clearAll()">C</button>
+                <button class="btn btn-secondary text-success w-25">%</button>
+                <button class="btn btn-secondary text-success w-25">del</button>
+                <button class="btn btn-secondary text-success w-25">/</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('7')">7</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('8')">8</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('9')">9</button>
+                <button class="btn btn-secondary text-success w-25">x</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('4')">4</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('5')">5</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('6')">6</button>
+                <button class="btn btn-secondary text-success w-25">-</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('1')">1</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('2')">2</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('3')">3</button>
+                <button class="btn btn-secondary text-success w-25" onclick="setOperation('+')">+</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary text-success w-25">rotate</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('0')">0</button>
+                <button class="btn btn-secondary text-light w-25" onclick="numberInput('.')">.</button>
+                <button class="btn btn-secondary btn btn-success w-25" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
